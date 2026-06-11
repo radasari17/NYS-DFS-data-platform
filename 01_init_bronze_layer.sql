@@ -15,13 +15,13 @@ GO
 CREATE TABLE raw_orders (
     -- 'order_id' is our Primary Key (The unique barcode on the receipt). 
     -- INT means it will only accept whole numbers.
-    order_id INT PRIMARY KEY,
+    order_id VARCHAR(50) PRIMARY KEY,
     
     -- 'customer_id' tells us who bought it.
-    customer_id INT,
+    customer_id VARCHAR(50),
     
     -- 'store_id' tells us which of our locations sold it.
-    store_id INT,
+    store_id VARCHAR(50),
     
     -- 'order_date' is the day it happened. 
     -- GOVERNANCE NOTE: We are using VARCHAR (Text) instead of DATE right now. 
@@ -30,7 +30,7 @@ CREATE TABLE raw_orders (
     order_date VARCHAR(50),
     
     -- 'promotion_id' tracks if a discount was applied.
-    promotion_id INT
+    promotion_id VARCHAR(50)
 );
 GO
 
@@ -65,13 +65,13 @@ GO
 -- Create the second manila folder (Create the raw_order_items table)
 CREATE TABLE raw_order_items (
     -- 'order_item_id' is our Primary Key (The unique barcode for this specific row).
-    order_item_id INT PRIMARY KEY,
+    order_item_id VARCHAR(50) PRIMARY KEY,
     
     -- 'order_id' is our Foreign Key. This links the item back to the receipt header!
-    order_id INT,
+    order_id VARCHAR(50),
     
     -- 'product_id' is the manufacturer's code for the item.
-    product_id INT,
+    product_id VARCHAR(50),
     
     -- 'product_name' is the actual text description (e.g., 'Lifebuoy Soap').
     -- GOVERNANCE NOTE: We use VARCHAR(255) here to ensure long product 
@@ -79,10 +79,10 @@ CREATE TABLE raw_order_items (
     product_name VARCHAR(255),
     
     -- 'qty' is how many units the customer bought.
-    qty INT,
+    qty VARCHAR(50),
     
     -- 'total_transaction' is the raw revenue for this specific item.
     -- We use DECIMAL(10,2) to safely handle money (up to 10 digits, 2 decimal places).
-    total_transaction DECIMAL(10,2)
+    total_transaction VARCHAR(50)
 );
 GO
