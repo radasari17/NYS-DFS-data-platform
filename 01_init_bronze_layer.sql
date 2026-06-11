@@ -86,3 +86,28 @@ CREATE TABLE raw_order_items (
     total_transaction VARCHAR(50)
 );
 GO
+
+
+-- 3. Create the payments transaction table
+CREATE TABLE raw_payments (
+    payment_id VARCHAR(50) PRIMARY KEY,
+    order_id VARCHAR(50),
+    amount VARCHAR(50)
+);
+GO
+
+-- 4. Create the shipments transaction table
+CREATE TABLE raw_shipments (
+    shipment_id VARCHAR(50) PRIMARY KEY,
+    order_id VARCHAR(50),
+    status VARCHAR(50)
+);
+GO
+
+-- 5. Create the returns transaction table
+CREATE TABLE raw_returns (
+    return_id VARCHAR(50) PRIMARY KEY,
+    order_item_id VARCHAR(50),
+    refund VARCHAR(50)
+);
+GO
